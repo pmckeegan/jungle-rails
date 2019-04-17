@@ -14,10 +14,21 @@
     <% end %>
     <%= link_to product, class: 'btn btn-default pull-right' do %>
       Details &raquo;
-    <% end %>
+    <% end %>aside 
   </footer>
 
   <aside class="price">
     <%= humanized_money_with_symbol product.price %>
   </aside>
+
+
+  <% if product.quantity == 0 %>
+  <aside class="sold-out">
+  <img class="homer" src = "https://media.giphy.com/media/3orieKxkjGNcv62DD2/giphy.gif">
+      Sold Out
+  </aside> 
+  <% end %>
+  
+
 </article>
+
