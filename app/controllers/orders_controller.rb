@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     charge = perform_stripe_charge
     order  = create_order(charge)
 
-    if order.valid?
+    if order.valid? 
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else
