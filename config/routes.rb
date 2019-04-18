@@ -2,6 +2,20 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
+  #get signup information from a new user
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+
+  # these routes are for showing users a login form, logging them in, and logging them out.
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+  
+
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
@@ -17,6 +31,8 @@ Rails.application.routes.draw do
     resources :products, except: [:edit, :update, :show]
     resources :categories, only: [:index, :new, :create]
     end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
