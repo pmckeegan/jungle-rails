@@ -21,6 +21,7 @@ end
 
 # Let's do this ...
 
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -131,6 +132,62 @@ cat3.products.create!({
   quantity: 23,
   price: 2_483.75
 })
+
+##create users
+
+User.create!({
+  first_name: 'Joe',
+  last_name: 'Schmoe',
+  email: 'Joe@joe.com',
+  password_digest: '666',
+})
+
+User.create!({
+  first_name: 'Bill',
+  last_name: 'Withers',
+  email: 'Joe@joe.com',
+  password_digest: '666',
+})
+
+User.create!({
+  first_name: 'CokeS',
+  last_name: 'Steve',
+  email: 'Joe@joe.com',
+  password_digest: '666',
+})
+
+##Create reviews
+
+Review.destroy_all
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 3
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 3
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 2,
+  description: Faker::Hipster.paragraph(4),
+  rating: 3
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 3,
+  description: Faker::Hipster.paragraph(4),
+  rating: 3
+})
+
 
 
 puts "DONE!"
