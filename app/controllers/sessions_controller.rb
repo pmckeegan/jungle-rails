@@ -21,7 +21,6 @@ def create
       session[:user_id] = user.id
       puts "stopping sessions controller"
   binding.pry
-
       redirect_to '/'
     else
       redirect_to '/login'
