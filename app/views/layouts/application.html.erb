@@ -12,7 +12,12 @@
   
 
 
-  <main class="container">
+<main class="container">
+  <% flash.each do |key, value| %>
+  <p> <%= value %> </p>
+  <% end%> 
+
+
     <%= yield %>
   </main>
 

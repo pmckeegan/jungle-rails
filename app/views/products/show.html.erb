@@ -24,8 +24,51 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
-    </div>
 
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+          <%= form_for [@product, Review.new] do |f| %>
+            <div class="form-group">
+              <% if current_user %>
+              <dt>Product Review: </dt> 
+              <dd><%= f.text_area :description %></dd>
+              <dt>Rating: </dt>
+              <dd><%= f.select :rating, [
+                  ["1", 1], 
+                  ["2", 2], 
+                  ["3", 3], 
+                  ["4", 4], 
+                  ["5", 5]], 
+                  {}, {class: "form-control"}  %></dd>           
+              <br/>
+            <dd><%= f.submit "Submit", class: "btn btn-info" %></dd>
+            <% else %>
+            <dd> <h3>Login to post a review!</h3> </dd>
+            <dd><%= link_to 'Login', login_url , class: "btn btn-success" %></dd>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+        <div class="form-group">
+        </div>
+        <br>
+
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+          <% @reviews.reverse.each do |review| %>
+
+          <dt><%= review.user.first_name %> <%= review.user.last_name %></dt>
+
+
+            <br>
+          <dt>Review</dt>
+          <dd><%= review.description %></dd>
+          <dt>Rating</dt>
+          <dd><%= review.rating %></dd>
+            <br>
+          <% end %>
+    </div>
+ 
   </article>
 
 </section>
